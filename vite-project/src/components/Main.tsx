@@ -1,14 +1,23 @@
 import React from 'react'
+import { useAuth } from '../contexts/AuthContext'
 
 export default function Main() {
+  const { currentUser } = useAuth();
+
   // set by default to a month 
   const [income, setIncome] = React.useState(0);
   const [expense, setExpense] = React.useState(0);
 
+  // debug
+  console.log(currentUser);
+
   return (
     <>
       <header className="header">
-        <h1>Budget App</h1>
+        <div className="welcome">
+          <h1>Budget App</h1>
+          <p>Welcome {currentUser || 'Unknown'}!</p>
+        </div>
         <ul>
           <li>Login</li>
           <li>New movement</li>
